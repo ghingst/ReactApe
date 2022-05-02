@@ -121,6 +121,10 @@
     align-items: flex-start;
     row-gap: 10px;
   }
+
+  .header-bold-title{
+      font-weight: bold;
+  }
   
   #ape-title {
     font-size: 50px;

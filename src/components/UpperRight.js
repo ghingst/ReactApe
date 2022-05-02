@@ -14,12 +14,9 @@ data={value} />
 	  });
 	  }
 	  return (
-		<div id="schedules">
-			<h3>My Plan</h3>
-			<div id="plan">
+			<div id="schedules">
 				{yrs}
-			</div>
-		</div>
+			</div>	
 	  );
 	}	
 }
