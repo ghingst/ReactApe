@@ -268,12 +268,15 @@
     width: 33.3%;
     border-radius: 10px;
     overflow-y: auto;
+    flex-direction: column;
   }
   
   .period {
     font-weight: bold;
     width: 90%;
     text-align: left;
+    display: flex;
+    flex-direction: column;
   }
   
   .period-header {
