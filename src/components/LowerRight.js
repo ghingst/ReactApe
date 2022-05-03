@@ -3,16 +3,25 @@ import React, {Component} from 'react';
 
 class LowerRight extends Component {
     render() {
-            let html = "";
+        if (this.props.catalog == null) {
+            return;
+        }
+
+        let html = "";/*"<tr>";
+        html += "<td> " + this.props.catalog[1].name +  "</td>";
+        html += "<td> 2 </td>";
+        html += "<td> 3 </td>";
+        html += "<td> 4 </td>";
+        html += "</tr>";*/
             /*This loop is broke until catalog is brought in properly*/
-    /*for (var i = 0; i < this.props.catalog.courses.length; i++) {
+    for (var i = 0; i < this.props.catalog.length; i++) {
         html += "<tr>";
-        html += "<td>" + this.props.catalog.courses[i].id + "</td>";
-        html += "<td>" + this.props.catalog.courses[i].name + "</td>";
-        html += "<td>" + this.props.catalog.courses[i].description + "</td>";
-        html += "<td>" + this.props.catalog.courses[i].credits + "</td>";
+        html += "<td>" + this.props.catalog[i].id + "</td>";
+        html += "<td>" + this.props.catalog[i].name + "</td>";
+        html += "<td>" + this.props.catalog[i].description + "</td>";
+        html += "<td>" + this.props.catalog[i].credits + "</td>";
         html += "</tr>";
-    }*/
+    }
         return (
             <div id="course-finder">
             <table id="catalog_table" className="catalogDisplay">
@@ -25,11 +34,8 @@ class LowerRight extends Component {
                     <th>Credits</th>
                     </tr>
                 </thead> 
-                <tbody id="catalog_body">
+                    <tbody id="catalog_body" dangerouslySetInnerHTML={{ __html: html }}>
                 </tbody>
-                <script>
-                    document.getElementById("catalog_body").innerHTML = html;
-                </script>
                 </table>
             </div>
         );
