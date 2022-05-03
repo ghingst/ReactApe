@@ -5,25 +5,46 @@ class Login extends Component {
     constructor(props) { 
         super(props); 
         this.state = {
-            username: ""
+            username: "",
+            login_data: null,
         };
+    }
+
+    loadLoginInfo() {
+        fetch('http://judah.cedarville.edu/~hingst/getLogin.php')
+        .then(response => response.json())
+        .then(data => this.setState({login_data: data})
+        );
     }
 
     handleSubmit(event){
         event.preventDefault();
         var pw = document.getElementById("password");
-        if (pw.value == "password") {
-            this.props.setLoggedIn(true);     
-        };
-        
+        //var username = document.getElementById("username");
+        var userArray = this.state['login_data'].users;
+        for(var i=0; i < userArray.length; i++) {
+            var user = userArray.at(i);
+            var fetchedUsername = user.username;
+            var fetchedPW = user.password;
+            if (this.state['username'] == fetchedUsername) {
+                //alert("username match");
+                if (pw.value == fetchedPW) {
+                    //alert("password match");
+                    this.props.setLoggedIn(true);
+                    break;
+                }
+            }
+        }        
+    }
+
+    componentDidMount() {
+        this.loadLoginInfo();
     }
 
     handleNameChanged(event){
         var name = event.target.value;
         this.setState({username: name})
-    }
-
-        
+    }      
 
 render(){
         return(
