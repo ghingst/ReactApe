@@ -6,6 +6,7 @@ import UpperLeft from './UpperLeft';
 import UpperRight from './UpperRight';
 import LowerLeft from './LowerLeft';
 import LowerRight from './LowerRight';
+import { flushSync } from 'react-dom';
 //import Term from './Term';
 
 class Ape extends Component {
@@ -23,15 +24,41 @@ class Ape extends Component {
     var combinedURL = "http://judah.cedarville.edu/~hingst/6-getCombined.php?username=" + this.props.username;
     var requirementsURL = "http://judah.cedarville.edu/~hingst/6-getRequirements.php?username=" + this.props.username;
     //var nameParm = this.state['username'];
+
+    // Fetch the courses to build the plans
     fetch(combinedURL)
      .then(response => response.json())
-     .then(data => this.setState({planCourseList: data.plan, catalog: data.catalog})
-       );
+     .then(data => {
+        // Create a hashmap for the plans. Key is plan name and value is array of courses for that plan
+        var planMaps = new Map();
+
+        // Go through entire JSON and add each course to their respective plan
+        data.plan.forEach((key, value) => {
+          // If this is the first time encountering this plan, set it as empty array
+          if(planMaps.get(key.plan_name) == null){
+            planMaps.set(key.plan_name, []);
+          }
+          
+          // Create a new array. Apply what's already in planMaps to it, add the new course, 
+          // then push back to planMaps
+          var currentPlan = [];
+
+          currentPlan.push.apply(currentPlan, planMaps.get(key.plan_name));
+          currentPlan.push(key);        // If you'd like, you can specify a specific value here
+
+          planMaps.set(key.plan_name, currentPlan);
+        });
+
+        // Set the plan as the newly built planMaps
+        this.setState({plan: planMaps});
+      }
+    );
    //plan: this.convertPlan(data.plan), 
    fetch(requirementsURL)
      .then(response => response.json())
      .then(data => this.setState({requirements: data})
      );
+     //alert(JSON.stringify(this.state));
   }
    
  
@@ -71,23 +98,24 @@ class Ape extends Component {
 
 
 	render(){
+    console.log((this.state));
 	  return (
 		<div className="App" id="content">
       <div id="header"> 
-      <Banner/>
-      {/*<BannerRight planList={this.state.planList}/> */}
+        <Banner/>
+        {/*<BannerRight planList={this.state.planList}/> */}
       </div>
 			
 			<div id="middle">
         <UpperLeft/>
-			{/*<UpperLeft requirements={this.state.requirements}
+			  {/*<UpperLeft requirements={this.state.requirements}
         catalog={this.state.catalog} /> */}
-			<UpperRight plan={this.state.plan} catalog={this.state.catalog}/>
+			  <UpperRight plan={this.state.plan} catalog={this.state.catalog}/>
 			</div>
       <div id="bottom">
-      {<LowerLeft /> }
-      <LowerRight /> 
-			{/*<LowerRight catalog={this.state.catalog} /> */}
+        {<LowerLeft /> }
+        <LowerRight /> 
+			  {/*<LowerRight catalog={this.state.catalog} /> */}
       </div>
       <button onClick = {this.logout.bind(this)}>Log Out </button>
 		</div>
