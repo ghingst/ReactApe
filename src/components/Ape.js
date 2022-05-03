@@ -42,15 +42,13 @@ class Ape extends Component {
           // Create a new array. Apply what's already in planMaps to it, add the new course, 
           // then push back to planMaps
           var currentPlan = [];
-
           currentPlan.push.apply(currentPlan, planMaps.get(key.plan_name));
           currentPlan.push(key);        // If you'd like, you can specify a specific value here
-
           planMaps.set(key.plan_name, currentPlan);
         });
 
         // Set the plan as the newly built planMaps
-        this.setState({plan: planMaps});
+        this.setState({plan: planMaps, catalog: data.catalog});
       }
     );
    //plan: this.convertPlan(data.plan), 
@@ -58,7 +56,6 @@ class Ape extends Component {
      .then(response => response.json())
      .then(data => this.setState({requirements: data})
      );
-     //alert(JSON.stringify(this.state));
   }
    
  
@@ -95,7 +92,6 @@ class Ape extends Component {
   logout(){
     this.props.setLoggedIn(false)
   }
-
 
 	render(){
     console.log((this.state));
