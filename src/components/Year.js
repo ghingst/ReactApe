@@ -7,9 +7,9 @@ class Year extends Component {
 	  return (
 		<div className="year">
 			{/* <h3>{this.props.year}</h3> */}			
-			<Term2 catalog={this.props.catalog} data={this.props.data['fa']} term="Fall" year={this.props.year}/>
-			<Term2 catalog={this.props.catalog} data={this.props.data['sp']} term="Spring" year={this.props.year}/>
-			<Term2 catalog={this.props.catalog} data={this.props.data['su']} term="Summer" year={this.props.year}/>	
+			<Term2 catalog={this.props.catalog} data={this.props.data.fallTerm} term="Fall" year={this.props.theYear}/>
+			<Term2 catalog={this.props.catalog} data={this.props.data.springTerm} term="Spring" year={this.props.theYear}/>
+			<Term2 catalog={this.props.catalog} data={this.props.data.summerTerm} term="Summer" year={this.props.theYear}/>	
 		</div>
 	  );
 	}

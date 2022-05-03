@@ -93,18 +93,24 @@ class UpperRight extends Component {
 			for (let [key, value] of this.props.plan){
 				//currently set to always use first plan
 				var yearsArray = [];
-				alert(key);
-				alert(JSON.stringify(value));
-				alert("Building year");
+				//alert(key);
+				//alert(JSON.stringify(value));
+				//alert("Building year");
 				this.convertPlanToYear(value, yearsArray, this.props.catalog);
-				for (var y=0; y < yearsArray.length; y++) {
-					
-				}
-				yrs = (value) => {
+				// for (var y=0; y < yearsArray.length; y++) {
+
+				// }
+				yrs = yearsArray.map((year) => {
 					return (
-						<Year catalog={this.props.catalog} courses ={value} />
+						<Year catalog={this.props.catalog} data = {year} theYear = {year.year}/>
 					);
-				}
+				});
+
+				// yrs = (value) => {
+				// 	return (
+				// 		<Year catalog={this.props.catalog} courses ={value} />
+				// 	);
+				// }
 				break
 			};
 		}

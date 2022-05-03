@@ -6,7 +6,7 @@ const Term2 = (props)=>{
             <div className="courseWrapper">
                 <p className="course">
                 {courseName}
-                <img className='del-course' src='Images/x-icon.png'/>
+               
                 </p>
             </div>
         );	
