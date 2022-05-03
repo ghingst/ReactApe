@@ -14,20 +14,21 @@ class Ape extends Component {
 		this.state = {
 		  requirements: null,
 		  plan: null,
-		  planList: null,
+		  planCourseList: null,
 		  catalog: null,
 		};
 	}
 
   loadNewPlan(){
-
-    fetch('http://judah.cedarville.edu/~gallaghd/cs3220/ape/getCombinedNoSession.php')
+    var combinedURL = "http://judah.cedarville.edu/~hingst/6-getCombined.php?username=" + this.props.username;
+    var requirementsURL = "http://judah.cedarville.edu/~hingst/6-getRequirements.php?username=" + this.props.username;
+    //var nameParm = this.state['username'];
+    fetch(combinedURL)
      .then(response => response.json())
-     .then(data => this.setState({plan: this.convertPlan(data.plan), planList: 
- data.planList, catalog: data.catalog})
+     .then(data => this.setState({planCourseList: data.plan, catalog: data.catalog})
        );
-   
-    fetch('http://judah.cedarville.edu/~gallaghd/cs3220/ape/getRequirementsNoSession.php')
+   //plan: this.convertPlan(data.plan), 
+   fetch(requirementsURL)
      .then(response => response.json())
      .then(data => this.setState({requirements: data})
      );

@@ -31,6 +31,8 @@ class Login extends Component {
                 if (pw.value == fetchedPW) {
                     //alert("password match");
                     this.props.setLoggedIn(true);
+                    var sessionName = this.state['username'];
+                    this.props.setUsername(sessionName);
                     break;
                 }
             }
