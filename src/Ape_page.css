@@ -202,7 +202,7 @@
     width: 250px;
   }
   
-    #course-list .ui-accordion-header {
+    #course-list .accordion-header {
         font-weight: bold;
         display: block;
         cursor: pointer;
@@ -214,7 +214,7 @@
         color: var(--royal-blue);
     }
   
-    #course-list .ui-accordion-content {
+    #course-list .accordion-content {
         font-weight: bold;
         width: 90%;
         background-color: var(--makeup-brown-light);
@@ -225,12 +225,12 @@
     }
   
     
-    #course-list .ui-accordion-content p {
+    #course-list .accordion-content p {
         padding: 3px;
         cursor: pointer;
     }
   
-    #course-list .ui-accordion-content p:hover {
+    #course-list .accordion-content p:hover {
         background-color: var(--makeup-brown);
     }
   
