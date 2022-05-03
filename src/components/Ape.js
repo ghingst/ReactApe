@@ -86,7 +86,7 @@ class Ape extends Component {
 			</div>
       <div id="bottom">
       {<LowerLeft /> }
-      <LowerRight /> 
+      <LowerRight catalog={this.state.catalog}/> 
 			{/*<LowerRight catalog={this.state.catalog} /> */}
       </div>
       <button onClick = {this.logout.bind(this)}>Log Out </button>
