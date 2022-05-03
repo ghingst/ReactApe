@@ -95,6 +95,32 @@ class Ape extends Component {
 
 	render(){
     console.log((this.state));
+    var keyName = "";
+    var courseArray;
+    var desiredIndex = 0;
+    if (this.state.plan != null) {
+      //alert(JSON.stringify(this.state.plan.size));
+      //alert("stringify json");
+      var i = 0;
+      for (let [key, value] of this.state.plan) {
+        if (i = desiredIndex) {
+          keyName = key;
+          courseArray = value;
+          break;
+        }
+        //setting up to take desiredIndex key value and then break
+        else {
+          i++;
+        }
+        //alert(key);
+        //alert(JSON.stringify(value));
+        
+      }
+      //alert("trying to get values from key");
+      //alert(JSON.stringify(this.state.plan.get(keyName)));
+      //alert(JSON.stringify(this.state.plan.get('Comp_Sci_2019_Catalog')));
+    }
+    
 	  return (
 		<div className="App" id="content">
       <div id="header"> 
@@ -106,7 +132,7 @@ class Ape extends Component {
         <UpperLeft/>
 			  {/*<UpperLeft requirements={this.state.requirements}
         catalog={this.state.catalog} /> */}
-			  <UpperRight plan={this.state.plan} catalog={this.state.catalog}/>
+			  <UpperRight plan={this.state.plan} catalog={this.state.catalog} planName = {keyName}/>
 			</div>
       <div id="bottom">
       {<LowerLeft /> }
