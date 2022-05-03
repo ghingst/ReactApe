@@ -49,16 +49,17 @@ class Ape extends Component {
 
         // Set the plan as the newly built planMaps
         this.setState({plan: planMaps, catalog: data.catalog});
+        console.log((this.state));
       }
     );
-   //plan: this.convertPlan(data.plan), 
-   fetch(requirementsURL)
+    
+    // Fetch the requirements to build the accordion
+    fetch(requirementsURL)
      .then(response => response.json())
      .then(data => this.setState({requirements: data})
      );
   }
    
- 
   componentDidMount() {
      this.loadNewPlan();
   }
@@ -129,7 +130,7 @@ class Ape extends Component {
       </div>
 			
 			<div id="middle">
-        <UpperLeft/>
+        <UpperLeft requirements={this.state.requirements} />
 			  {/*<UpperLeft requirements={this.state.requirements}
         catalog={this.state.catalog} /> */}
 			  <UpperRight plan={this.state.plan} catalog={this.state.catalog} planName = {keyName}/>
