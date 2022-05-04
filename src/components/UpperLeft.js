@@ -21,7 +21,7 @@ class UpperLeft extends Component {
         var cognateArray = [];
 
         // Get the data from the passed in JSON
-        console.log(this.props.requirements);
+        //console.log(this.props.requirements);
         this.props.requirements.forEach((key, value) => {
             if(key.category == "Core"){
                 coreArray.push(key.course_id + " " + key.name);
@@ -33,9 +33,9 @@ class UpperLeft extends Component {
                 cognateArray.push(key.course_id + " " + key.name);
             }
         });
-        console.log("CoreArray: " + coreArray);
-        console.log("ElectiveArray: " + electiveArray);
-        console.log("CognateArray: " + cognateArray);
+        //console.log("CoreArray: " + coreArray);
+        //console.log("ElectiveArray: " + electiveArray);
+        //console.log("CognateArray: " + cognateArray);
 
         // Pre-build some HTML to be passed into the return statement
         var coreArrayHTML = "";

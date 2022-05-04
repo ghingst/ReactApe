@@ -8,28 +8,28 @@ class Banner extends Component {
                 <div id="user-info">
                     <span id="name">
                         <span className="header-bold-title">
-                            Student: 
+                            Student: {this.props.fullName}
                         </span>
                         
                         
                     </span>
                     <span id="Catalog">
                         <span className="header-bold-title">
-                            Catalog: 
+                            Catalog: {this.props.catalogYear}
                         </span>
                         
                         
                     </span>
                     <span id="Major">
                         <span className="header-bold-title">
-                            Major: 
+                            Major: {this.props.major}
                         </span>
                         
                         
                     </span>
                     <span id="Minor">
                         <span className="header-bold-title">
-                            Credits: 
+                            Credits: {this.props.totalCredits}
                         </span>
                         
                         
@@ -48,7 +48,8 @@ class Banner extends Component {
                         </div>  
                     </div>
                     <div id="log-out-button">
-                        <span>Log out</span>
+                        <span><button onClick = {this.props.logout}>Log Out </button> </span>
+                        {/* <span>Log out</span> */}
                     </div>
                 </div>
             </div>

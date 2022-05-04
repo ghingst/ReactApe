@@ -33,6 +33,9 @@ class Login extends Component {
                     this.props.setLoggedIn(true);
                     var sessionName = this.state['username'];
                     this.props.setUsername(sessionName);
+                    var displayName = user.first_name + " " + user.last_name;
+                    //alert("setting displayName as: " + displayName);
+                    this.props.setFullName(displayName);
                     break;
                 }
             }
